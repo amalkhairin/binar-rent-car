@@ -1,3 +1,3 @@
 # SYNRGY Challenge
-## Binar Rent Car
+## Binar Rental Car
 This is an assignment for SYNRGY class.
