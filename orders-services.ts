@@ -39,11 +39,7 @@ export class OrderService {
   }
 
   async patch(req: Request, res: Response) {
-    const body = {
-      ...req.body,
-      specs: JSON.stringify(req.body.specs),
-      options: JSON.stringify(req.body.specs),
-    };
+    const body = req.body;
     const order = await OrdersModel.query().findById(req.params.id).withGraphFetched("cars").patch(body);
     res.send(order);
   }
