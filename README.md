@@ -1,24 +1,14 @@
-# Express TS Starter
+# Challenge 5 dan Challenge 6
 
-Simple express TS starter!
+On Progress
 
-## How to use?
-
+## install
 ```
-$ npm install
-$ npm run dev # run development!
-```
-
-## Scripts
-
-```
-$ npm run build # build typescript project
-$ npm start # run in development mode
+npm install
+npm run build
 ```
 
-## Database
-
+## run
 ```
-$ docker compose up -d # run database
-$ docker compose down -v # delete database and the volume
+npm run dev
 ```
