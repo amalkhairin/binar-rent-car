@@ -2,6 +2,9 @@
 
 In Progress
 
+## ERD
+[ERD Binar Rent Car](https://dbdiagram.io/d/Binar-Rent-Car-Amal-656431db3be1495787c84972)
+
 ## install
 ```
 npm install
