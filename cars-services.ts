@@ -10,11 +10,11 @@ export class CarsService {
   }
 
   init() {
-    this.app.get("/", this.getAll);
-    this.app.post("/", this.create);
-    this.app.get("/:id", this.getById);
-    this.app.patch("/:id", this.patch);
-    this.app.delete("/:id", this.delete);
+    this.app.get("/cars", this.getAll);
+    this.app.post("/cars", this.create);
+    this.app.get("/cars/:id", this.getById);
+    this.app.patch("/cars/:id", this.patch);
+    this.app.delete("/cars/:id", this.delete);
   }
 
   async getAll(req: Request, res: Response) {

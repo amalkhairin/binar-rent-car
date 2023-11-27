@@ -41,9 +41,6 @@ const app = (0, express_1.default)();
 // app.set("view engine", "ejs");
 app.use(express_1.default.static("public"));
 app.use(express_1.default.json());
-app.get("/favicon.ico", (_, res) => {
-    res.status(404).json({ message: "Not right now" });
-});
 // Register Cars Service
 new cars_services_1.CarsService(app).init();
 // new OrderService(app).init();
