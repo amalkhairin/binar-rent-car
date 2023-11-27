@@ -13,14 +13,14 @@ export class CarsService {
   }
 
   init() {
-    this.app.get("/", this.getMany);
+    this.app.get("/", this.getAll);
     this.app.post("/", this.create);
-    this.app.get("/:id", this.getOne);
+    this.app.get("/:id", this.getById);
     this.app.patch("/:id", this.patch);
     this.app.delete("/:id", this.delete);
   }
 
-  async getMany(req: Request, res: Response) {
+  async getAll(req: Request, res: Response) {
     const { plate } = req.query;
       const qCars = CarsModel.query();
 
@@ -32,7 +32,7 @@ export class CarsService {
       res.send(cars);
   }
 
-  async getOne(req: Request, res: Response) {
+  async getById(req: Request, res: Response) {
     const cars = await CarsModel.query().findById(req.params.id);
     res.send(cars);
   }
