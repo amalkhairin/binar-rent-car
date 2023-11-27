@@ -1,6 +1,6 @@
 # Challenge 5 dan Challenge 6
 
-On Progress
+In Progress
 
 ## install
 ```
