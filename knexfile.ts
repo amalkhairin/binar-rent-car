@@ -4,8 +4,8 @@ const config: { [key: string]: Knex.Config } = {
   development: {
     client: "postgresql",
     connection: {
-      database: "my_db",
-      user: "admin",
+      database: "db_binar_rent_car",
+      user: "postgres",
       password: "admin4231",
     },
     pool: {
@@ -19,8 +19,8 @@ const config: { [key: string]: Knex.Config } = {
   production: {
     client: "postgresql",
     connection: {
-      database: "my_db",
-      user: "admin",
+      database: "db_binar_rent_car",
+      user: "postgres",
       password: "admin4231",
     },
     pool: {

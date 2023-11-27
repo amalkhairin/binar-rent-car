@@ -1,7 +1,7 @@
 import { ModelObject } from "objection";
 import { ModelWithValidator } from "./base";
 
-export class Car extends ModelWithValidator {
+export class CarsModel extends ModelWithValidator {
   id!: number;
   plate!: string;
   manufacture!: string;
@@ -35,4 +35,4 @@ export class Car extends ModelWithValidator {
   }
 }
 
-export type Cars = ModelObject<Car>;
+export type Cars = ModelObject<CarsModel>;
