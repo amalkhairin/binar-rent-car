@@ -1,12 +1,15 @@
 import type { Knex } from "knex";
+import dotenv from "dotenv";
+
+dotenv.config()
 
 const config: { [key: string]: Knex.Config } = {
   development: {
     client: "postgresql",
     connection: {
-      database: "db_binar_rent_car",
-      user: "postgres",
-      password: "admin4231",
+      database: process.env.DB_NAME,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
     },
     pool: {
       min: 2,
@@ -19,9 +22,9 @@ const config: { [key: string]: Knex.Config } = {
   production: {
     client: "postgresql",
     connection: {
-      database: "db_binar_rent_car",
-      user: "postgres",
-      password: "admin4231",
+      database: process.env.DB_NAME,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
     },
     pool: {
       min: 2,
