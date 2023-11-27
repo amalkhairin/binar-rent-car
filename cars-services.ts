@@ -56,7 +56,7 @@ export class CarsService {
     const body = {
       ...req.body,
       specs: JSON.stringify(req.body.specs),
-      options: JSON.stringify(req.body.specs),
+      options: JSON.stringify(req.body.options),
     };
     const car = await CarsModel.query().findById(req.params.id).patch(body);
     res.send(car);

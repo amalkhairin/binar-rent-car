@@ -4,7 +4,7 @@ const tableName = "cars";
 export async function up(knex: Knex): Promise<void> {
     return knex.schema.createTable(tableName, (table: Knex.TableBuilder) => {
         table.increments("id").primary();
-        table.string("plate", 10).notNullable();
+        table.string("plate", 20).notNullable();
         table.string("manufacture", 20).notNullable();
         table.text("image").notNullable();
         table.string("model", 20).notNullable();
