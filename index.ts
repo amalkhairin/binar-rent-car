@@ -21,7 +21,7 @@ app.use(express.json());
 
 // Register Cars Service
 new CarsService(app).init();
-// new OrderService(app).init();
+new OrderService(app).init();
 
 app.listen(PORT, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);

@@ -1,5 +1,6 @@
 import { Express, Request, Response } from "express";
-import { OrdersModel } from "./models/orders";
+import { OrdersModel, Orders } from "./models/orders";
+import { ValidationError } from "objection";
 
 export class OrderService {
   app: Express;
@@ -9,14 +10,47 @@ export class OrderService {
   }
 
   init() {
-    this.app.get("/orders/:id", this.getOne);
+    this.app.get("/orders/:id", this.getById);
+    this.app.post("/orders", this.create);
+    this.app.patch("/orders/:id", this.patch);
+    this.app.delete("/orders/:id", this.delete);
   }
 
-  async getOne(req: Request, res: Response) {
+  async getById(req: Request, res: Response) {
     const id = req.params.id;
     const order = await OrdersModel.query()
       .findById(id)
       .withGraphFetched("cars");
     res.status(200).json(order);
   }
+
+  async create(req: Request<{}, {}, Orders, {}>, res: Response) {
+    try {
+      const body = req.body
+      const order = await OrdersModel.query().insert(body).returning("*");
+      res.send(order);
+    } catch (error) {
+      if (error instanceof ValidationError) {
+        res.send({
+          message: error.message,
+        });
+      }
+    }
+  }
+
+  async patch(req: Request, res: Response) {
+    const body = {
+      ...req.body,
+      specs: JSON.stringify(req.body.specs),
+      options: JSON.stringify(req.body.specs),
+    };
+    const order = await OrdersModel.query().findById(req.params.id).withGraphFetched("cars").patch(body);
+    res.send(order);
+  }
+
+  async delete(req: Request, res: Response) {
+    const order = await OrdersModel.query().deleteById(req.params.id);
+    res.send(order);
+  }
+
 }

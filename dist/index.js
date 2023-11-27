@@ -30,6 +30,7 @@ const express_1 = __importDefault(require("express"));
 const knex_1 = __importDefault(require("knex"));
 const objection_1 = require("objection");
 const cars_services_1 = require("./cars-services");
+const orders_services_1 = require("./orders-services");
 const config = __importStar(require("./knexfile"));
 const PORT = 3000;
 const ENV = "development";
@@ -43,7 +44,7 @@ app.use(express_1.default.static("public"));
 app.use(express_1.default.json());
 // Register Cars Service
 new cars_services_1.CarsService(app).init();
-// new OrderService(app).init();
+new orders_services_1.OrderService(app).init();
 app.listen(PORT, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
 });
