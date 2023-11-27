@@ -1,9 +1,6 @@
 import { Express, Response, Request } from "express";
 import { CarsModel, Cars } from "./models/cars";
 import { ValidationError } from "objection";
-import Redis from "ioredis";
-
-const redis = new Redis();
 
 export class CarsService {
   app: Express;
