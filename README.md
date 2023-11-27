@@ -12,3 +12,14 @@ npm run build
 ```
 npm run dev
 ```
+
+## API
+### Car services
+```
+GET /cars
+GET /cars/:id
+POST /cars
+PATCH /cars/:id
+DELETE /cars/:id
+
+```
