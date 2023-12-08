@@ -29,22 +29,30 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const knex_1 = __importDefault(require("knex"));
 const objection_1 = require("objection");
-const cars_services_1 = require("./cars-services");
-const orders_services_1 = require("./orders-services");
 const config = __importStar(require("./knexfile"));
+const car_controller_1 = __importDefault(require("./controller/car-controller"));
+const app_controller_1 = __importDefault(require("./controller/app-controller"));
+const user_controller_1 = __importDefault(require("./controller/user-controller"));
 const PORT = 3000;
 const ENV = "development";
+const TOKEN_SECRET = "secret_token";
 // @ts-expect-error
 const knexInstance = (0, knex_1.default)(config[ENV]);
-// Connect ORM to Database
-objection_1.Model.knex(knexInstance);
 const app = (0, express_1.default)();
-// app.set("view engine", "ejs");
-app.use(express_1.default.static("public"));
-app.use(express_1.default.json());
-// Register Cars Service
-new cars_services_1.CarsService(app).init();
-new orders_services_1.OrderService(app).init();
-app.listen(PORT, () => {
+class App {
+    constructor(app) {
+        this.app = app;
+        objection_1.Model.knex(knexInstance);
+        this.app.use(express_1.default.json());
+        this.app.use(express_1.default.static("public"));
+        this.routes();
+    }
+    routes() {
+        new user_controller_1.default(app).init();
+        new app_controller_1.default(app).init();
+        new car_controller_1.default(app).init();
+    }
+}
+new App(app).app.listen(PORT, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
 });
